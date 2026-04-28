@@ -22,7 +22,7 @@ export const useAuthStore = create(
             checkAuth: ()=> {
                 const token = get().token;
                 const role = get().user?.role;
-                const isAdmin = role === "DAMIN_ROLE";
+                const isAdmin = role === "ADMIN_ROLE";
 
                 if(token && !isAdmin){
                     set({
@@ -32,7 +32,7 @@ export const useAuthStore = create(
                         expiresAt: null,
                         isAuthenticated:false,
                         isLoadingAuth:false,
-                        erro: "No tienes permiso para acceder como administrador"
+                        error: "No tienes permiso para acceder como administrador"
                     })
                 }
             },
@@ -68,7 +68,7 @@ export const useAuthStore = create(
                     });
 
                     toast.error(message);
-                    return {succes: false, error: message};
+                    return {success: false, error: message};
                 }
 
                 set(
@@ -82,7 +82,7 @@ export const useAuthStore = create(
                     }
                 );
                 
-                return {succes: true}
+                return {success: true}
 
             },
             // ----------------------------------------------------------------
